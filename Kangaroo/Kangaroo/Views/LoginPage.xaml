@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Kangaroo.Views.LoginPage">
+
+    <ScrollView>
+        <Grid Padding="0" Margin="0" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <controls:Toolbar Grid.Row="0" Title="{resx:Translate Text=lbLogin}" BackgroundColor="Red"/>
+
+            <ffimageloading:CachedImage Grid.Row="1" x:Name="ffLogo" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" WidthRequest="190" 
+                HeightRequest="80" DownsampleToViewSize="true" Source="{helpers:ImageResource Kangaroo.Images.LoginLogo.png}" Margin="0,50,0,0"/>
+
+            <BoxView Grid.Row="2" Style="{StaticResource hSeparator}" HorizontalOptions="Center" WidthRequest="150"/>
+
+            <Label x:Name="lbLoginHint" Grid.Row="3" Text="{resx:Translate lbLoginHint}" Style="{StaticResource LabelButton}" HorizontalOptions="Center"/>
+
+            <BoxView Grid.Row="4" Style="{StaticResource hSeparator}" HorizontalOptions="Center" WidthRequest="150" Margin="0,0,0,40"/>
+
+            <Grid Grid.Row="5" HeightRequest="40" FlowDirection="RightToLeft" VerticalOptions="Center" Margin="50,0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+
+                <controls:CustomEntry Grid.Column="0" Text="{Binding user_login}" Placeholder="{Binding mobile_ex}" FlowDirection="LeftToRight" TextColor="{StaticResource TextColor}" 
+                                      PlaceholderColor="{StaticResource TextColor}" Keyboard="Numeric" Margin="0" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+
+                <!--For Android-->
+                <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,8" Padding="0" Spacing="0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" Padding="0" Spacing="0">
+                        <controls:CustomLabel Text="{Binding call_key}" WidthRequest="40" FlowDirection="LeftToRight" Margin="0" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" TextColor="{StaticResource TextColor}"/>
+                        <Image Source="{Binding flag_path}" WidthRequest="25" HeightRequest="25" Margin="0"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource TextColor}" HorizontalOptions="FillAndExpand" VerticalOptions="End" Margin="0"/>
+                    
+                    <StackLayout.IsVisible>
+                        <OnPlatform Android="true" iOS="false"/>
+                    </StackLayout.IsVisible>
+                </StackLayout>
+
+                <!--For iOS-->
+                <Frame Grid.Column="1" HasShadow="False" CornerRadius="0" BorderColor="#000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" Padding="0">
+                    <StackLayout Orientation="Horizontal" Spacing="0" Margin="0" Padding="0">
+                        <controls:CustomLabel Text="{Binding call_key}" WidthRequest="40" FlowDirection="LeftToRight" Margin="0" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" TextColor="{StaticResource TextColor}"/>
+                        <Image Margin="0" WidthRequest="25" HeightRequest="25" Source="{Binding flag_path}"/>
+                    </StackLayout>
+                    
+                    <Frame.IsVisible>
+                        <OnPlatform Android="false" iOS="true"/>
+                    </Frame.IsVisible>
+                </Frame>
+
+                <!--<Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SearchCountryCommand}"/>
+                </Grid.GestureRecognizers>-->
+            </Grid>
+
+            <controls:CustomEntry x:Name="txtPassword" Grid.Row="6" Text="{Binding password}" Placeholder="{resx:Translate Text=lbPassword}" TextColor="{StaticResource TextColor}" PlaceholderColor="{StaticResource TextColor}" HeightRequest="40" IsPassword="True" Margin="50,0,50,15" />
+
+            <Frame Grid.Row="7" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" BorderColor="{StaticResource BrandColor}" HeightRequest="40" VerticalOptions="Center" Margin="70,0" Padding="0">
+                <Grid Margin="0" Padding="0" ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0" Margin="0" Spacing="0">
+                        <Label Text="{resx:TranslateExtension Text=lbEnter}" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandWhite}" Margin="0"/>
+                    </StackLayout>
+                </Grid>
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LoginCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Label x:Name="lbForgetPassword" Grid.Row="8" Text="{resx:Translate lbForgetPassword}" HorizontalTextAlignment="Center" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" Margin="0,5,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ForgetPassword_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <BoxView Grid.Row="9" Style="{StaticResource hSeparator}" HorizontalOptions="Center" WidthRequest="150" Margin="0,5"/>
+
+            <Label x:Name="lbCreateAccount" Grid.Row="10" Text="{resx:Translate lbCreateAccount}" HorizontalTextAlignment="Center" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CreateAccount_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <ActivityIndicator Grid.RowSpan="11" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+        </Grid>
+    </ScrollView>
+
+</controls:BasePage>

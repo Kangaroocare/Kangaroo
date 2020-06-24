@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="Kangaroo.Views.ChildProfilePage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <controls:Toolbar x:Name="barTitle" />
+
+            <Grid Grid.Row="1" Padding="15" Margin="0" RowSpacing="15" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <ffimageloading:CachedImage x:Name="ffChildFace" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" 
+                    HeightRequest="180" WidthRequest="180" DownsampleToViewSize="true" Source="{Binding ChildData.child_face}" Margin="0">
+                </ffimageloading:CachedImage>
+
+                <BoxView Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe8b6;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbChildName}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.child_name}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe8a5;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbBirthDate}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.date_of_birth}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="4" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe876;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbGender}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.gender_name}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe8b5;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbSiblingsNo}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.siblings_number}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="6" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe8a5;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbStartDate}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.start_date}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="7" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe8a5;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbEndDate}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.end_date}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="8" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe828;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbParentName}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.parent_name}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="9" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="5">
+                    <Label Text="&#xe879;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbParentMobile}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="12" Margin="0"/>
+                    <Label Text="{Binding ChildData.parent_mobile}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="13" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CallParentCommand}" CommandParameter="{Binding ChildData.parent_mobile}"/>
+                    </StackLayout.GestureRecognizers> 
+                </StackLayout>
+            </Grid>
+
+            <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+        </Grid>
+    </ScrollView>
+
+</controls:BasePage>

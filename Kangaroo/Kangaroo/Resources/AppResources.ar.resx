@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lbActivation" xml:space="preserve">
+    <value>تفعيل الحساب</value>
+  </data>
+  <data name="lbActivationCode" xml:space="preserve">
+    <value>كود التفعيل</value>
+  </data>
+  <data name="lbBack" xml:space="preserve">
+    <value>رجـوع</value>
+  </data>
+  <data name="lbCancel" xml:space="preserve">
+    <value>إلغـاء</value>
+  </data>
+  <data name="lbChangeLanguage" xml:space="preserve">
+    <value>تغيير اللغـــــة</value>
+  </data>
+  <data name="lbChangePassword" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="lbCode" xml:space="preserve">
+    <value>الكــود</value>
+  </data>
+  <data name="lbConfirmPassword" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="lbCreateAccount" xml:space="preserve">
+    <value>إنشاء حساب جديد</value>
+  </data>
+  <data name="lbDate" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="lbDelete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="lbEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="lbEmail" xml:space="preserve">
+    <value>البريد الالكتروني</value>
+  </data>
+  <data name="lbEnter" xml:space="preserve">
+    <value>دخــول</value>
+  </data>
+  <data name="lbEnterData" xml:space="preserve">
+    <value>تفضل بإدخال بياناتك</value>
+  </data>
+  <data name="lbForgetPassword" xml:space="preserve">
+    <value>نسيت كلمة المرور ؟</value>
+  </data>
+  <data name="lbForgetPasswordTitle" xml:space="preserve">
+    <value>نسيت كلمة المرور</value>
+  </data>
+  <data name="lbLogin" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="lbLoginHint" xml:space="preserve">
+    <value>طفلك في حضنك لحظة بلحظة</value>
+  </data>
+  <data name="lbLogout" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="lbMain" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="lbMessage" xml:space="preserve">
+    <value>الرسالة</value>
+  </data>
+  <data name="lbMessages" xml:space="preserve">
+    <value>الرسائل</value>
+  </data>
+  <data name="lbMobile" xml:space="preserve">
+    <value>رقم الجوال</value>
+  </data>
+  <data name="lbMobileWithHint" xml:space="preserve">
+    <value>رقم الجوال (5XXXXXXXX)</value>
+  </data>
+  <data name="lbMore" xml:space="preserve">
+    <value>المزيد</value>
+  </data>
+  <data name="lbMyProfile" xml:space="preserve">
+    <value>حســــــابي</value>
+  </data>
+  <data name="lbName" xml:space="preserve">
+    <value>الإسم</value>
+  </data>
+  <data name="lbNewPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="lbNext" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="lbNotes" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="lbNotifications" xml:space="preserve">
+    <value>الإشعارات</value>
+  </data>
+  <data name="lbOldPassword" xml:space="preserve">
+    <value>كلمة المرور القديمة</value>
+  </data>
+  <data name="lbPassword" xml:space="preserve">
+    <value>كلمة المرور</value>
+  </data>
+  <data name="lbPrevious" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="lbPrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="lbResend" xml:space="preserve">
+    <value>إعادة إرسال</value>
+  </data>
+  <data name="lbResetPassword" xml:space="preserve">
+    <value>إعادة تعيين كلمة المرور</value>
+  </data>
+  <data name="lbSave" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="lbSearch" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="lbSearchKeyword" xml:space="preserve">
+    <value>كلمة البحث</value>
+  </data>
+  <data name="lbSender" xml:space="preserve">
+    <value>المرسل</value>
+  </data>
+  <data name="lbSendPassword" xml:space="preserve">
+    <value>إرسال كلمة المرور</value>
+  </data>
+  <data name="lbSendResetCode" xml:space="preserve">
+    <value>إرسال كود التعيين</value>
+  </data>
+  <data name="lbSettings" xml:space="preserve">
+    <value>الإعدادات</value>
+  </data>
+  <data name="lbTitle" xml:space="preserve">
+    <value>اللقب</value>
+  </data>
+  <data name="lbUpdateProfile" xml:space="preserve">
+    <value>تحديث الحساب</value>
+  </data>
+  <data name="lbUserData" xml:space="preserve">
+    <value>بيانات المستخدم</value>
+  </data>
+  <data name="lbYes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="msgAccountCreatedSuccessfully" xml:space="preserve">
+    <value>تم إنشاء الحساب بنجاح</value>
+  </data>
+  <data name="msgActivationCompleted" xml:space="preserve">
+    <value>تم تفعيل الحساب بنجاح</value>
+  </data>
+  <data name="msgConfirmDelete" xml:space="preserve">
+    <value>هل أنت متأكد من الحذف ؟</value>
+  </data>
+  <data name="msgConfirmPasswordError" xml:space="preserve">
+    <value>تأكيد كلمة المرور غير صحيح</value>
+  </data>
+  <data name="msgEmailFormatError" xml:space="preserve">
+    <value>البريد الالكتروني غير صحيح</value>
+  </data>
+  <data name="msgInvalidMobileNo" xml:space="preserve">
+    <value>رقم الجوال غير صحيح</value>
+  </data>
+  <data name="msgNoInternetConnection" xml:space="preserve">
+    <value>تأكد من الإتصال بالإنترنت</value>
+  </data>
+  <data name="msgOldPasswordInCorrect" xml:space="preserve">
+    <value>كلمة المرور القديمة غير صحيحة</value>
+  </data>
+  <data name="msgPasswordChanged" xml:space="preserve">
+    <value>تم تغيير كلمة المرور بنجاح</value>
+  </data>
+  <data name="msgProfileUpdatedSuccessfully" xml:space="preserve">
+    <value>تم تحديث الحساب بنجاح</value>
+  </data>
+  <data name="msgReqActivationCode" xml:space="preserve">
+    <value>من فضلك أدخل كود التفعيل</value>
+  </data>
+  <data name="msgReqConfirmPassword" xml:space="preserve">
+    <value>من فضلك أدخل تأكيد كلمة المرور</value>
+  </data>
+  <data name="msgReqLoginData" xml:space="preserve">
+    <value>من فضلك أدخل بيانات الدخول</value>
+  </data>
+  <data name="msgReqMobile" xml:space="preserve">
+    <value>من فضلك أدخل رقم الجوال</value>
+  </data>
+  <data name="msgReqNewPassword" xml:space="preserve">
+    <value>من فضلك أدخل كلمة المرور الجديدة</value>
+  </data>
+  <data name="msgReqOldPassword" xml:space="preserve">
+    <value>من فضلك أدخل كلمة المرور القديمة</value>
+  </data>
+  <data name="msgReqPassword" xml:space="preserve">
+    <value>من فضلك أدخل كلمة المرور</value>
+  </data>
+  <data name="msgReqResetCode" xml:space="preserve">
+    <value>من فضلك أدخل كود إعادة التعيين</value>
+  </data>
+  <data name="msgReqUserName" xml:space="preserve">
+    <value>من فضلك أدخل اسم المستخدم</value>
+  </data>
+  <data name="msgResendCompleted" xml:space="preserve">
+    <value>تم إعادة إرسال كود التفعيل</value>
+  </data>
+  <data name="msgSendPasswordCompleted" xml:space="preserve">
+    <value>تم إرسال كلمة المرور الجديدة</value>
+  </data>
+  <data name="msgSendPasswordError" xml:space="preserve">
+    <value>حدث خطأ أثناء إرسال كلمة المرور</value>
+  </data>
+  <data name="msgServerConnectionError" xml:space="preserve">
+    <value>خطأ في الإتصال بالسيرفر  ... حاول مرة أخرى بعد قليل</value>
+  </data>
+  <data name="lbCamera" xml:space="preserve">
+    <value>الكاميرا</value>
+  </data>
+  <data name="lbStudio" xml:space="preserve">
+    <value>الإستوديو</value>
+  </data>
+  <data name="lbAgreeTerms" xml:space="preserve">
+    <value>الموافقة على الشروط والأحكام</value>
+  </data>
+  <data name="msgUploadImageError" xml:space="preserve">
+    <value>حدث خطأ أثناء تحميل الصورة</value>
+  </data>
+  <data name="lbSendMessage" xml:space="preserve">
+    <value>إرسال الرسالة</value>
+  </data>
+  <data name="msgMessageSentSuccessfully" xml:space="preserve">
+    <value>تم إرسال الرسالة بنجاح</value>
+  </data>
+  <data name="msgReqMessage" xml:space="preserve">
+    <value>من فضلك أدخل الرسالة</value>
+  </data>
+  <data name="lbAccept" xml:space="preserve">
+    <value>قبول</value>
+  </data>
+  <data name="lbContact" xml:space="preserve">
+    <value>تواصل</value>
+  </data>
+  <data name="msgReqContactEmail" xml:space="preserve">
+    <value>من فضلك أدخل البريد الإلكتروني المرسل</value>
+  </data>
+  <data name="msgReqContactName" xml:space="preserve">
+    <value>من فضلك أدخل اسم المرسل</value>
+  </data>
+  <data name="msgReqContactSubject" xml:space="preserve">
+    <value>من فضلك أدخل محتوى الرسالة</value>
+  </data>
+  <data name="msgReqContactTitle" xml:space="preserve">
+    <value>من فضلك أدخل عنوان الرسالة</value>
+  </data>
+  <data name="lbAddReply" xml:space="preserve">
+    <value>اكتب رد</value>
+  </data>
+  <data name="lbMessageDetails" xml:space="preserve">
+    <value>تفاصيل الرسالة</value>
+  </data>
+  <data name="lbSend" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="lbContactUs" xml:space="preserve">
+    <value>اتصل بنا</value>
+  </data>
+  <data name="lbMessageContent" xml:space="preserve">
+    <value>محتوى الرسالة</value>
+  </data>
+  <data name="lbMessageTitle" xml:space="preserve">
+    <value>عنوان الرسالة</value>
+  </data>
+  <data name="lbSenderEmail" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="lbSenderName" xml:space="preserve">
+    <value>اسم المرسل</value>
+  </data>
+  <data name="lbSelectCountry" xml:space="preserve">
+    <value>اختر الدولة</value>
+  </data>
+  <data name="lbContactNumber" xml:space="preserve">
+    <value>رقم الإتصال</value>
+  </data>
+  <data name="msgReqCity" xml:space="preserve">
+    <value>من فضلك اختر المدينة</value>
+  </data>
+  <data name="lbAbout" xml:space="preserve">
+    <value>عن كانجارو كير</value>
+  </data>
+  <data name="lbDayCares" xml:space="preserve">
+    <value>الحضانات</value>
+  </data>
+  <data name="lbMyChildern" xml:space="preserve">
+    <value>أطفالي</value>
+  </data>
+  <data name="lbSearchDayCare" xml:space="preserve">
+    <value>بحث بإسم الحضانة</value>
+  </data>
+  <data name="lbCity" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="lbConfirmEmail" xml:space="preserve">
+    <value>تأكيد البريد الالكتروني</value>
+  </data>
+  <data name="lbCountry" xml:space="preserve">
+    <value>البلد</value>
+  </data>
+  <data name="lbFemale" xml:space="preserve">
+    <value>أنثى</value>
+  </data>
+  <data name="lbGender" xml:space="preserve">
+    <value>النـــــوع</value>
+  </data>
+  <data name="lbMale" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
+  <data name="lbNationalId" xml:space="preserve">
+    <value>رقم الهوية الوطنية</value>
+  </data>
+  <data name="lbPoints" xml:space="preserve">
+    <value>النقاط</value>
+  </data>
+  <data name="lbPromoCode" xml:space="preserve">
+    <value>البرومو كود</value>
+  </data>
+  <data name="lbChildRelation" xml:space="preserve">
+    <value>صلة القرابة</value>
+  </data>
+  <data name="lbRegister" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="msgConfirmEmailError" xml:space="preserve">
+    <value>تأكيد البريد الإلكتروني غير صحيح</value>
+  </data>
+  <data name="msgReqChildRelation" xml:space="preserve">
+    <value>من فضلك اختر صلة القرابة</value>
+  </data>
+  <data name="msgReqCountry" xml:space="preserve">
+    <value>من فضلك اختر البلد</value>
+  </data>
+  <data name="msgReqNationalId" xml:space="preserve">
+    <value>من فضلك أدخل رقم الهوية الوطنية</value>
+  </data>
+  <data name="lbDayCareDesc" xml:space="preserve">
+    <value>معلومات عن الحضانة</value>
+  </data>
+  <data name="lbFromDate" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+  <data name="lbFromTime" xml:space="preserve">
+    <value>من الساعة</value>
+  </data>
+  <data name="lbHolidays" xml:space="preserve">
+    <value>الأجازات</value>
+  </data>
+  <data name="lbHolidayType" xml:space="preserve">
+    <value>نوع الأجازة</value>
+  </data>
+  <data name="lbInitialDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="lbIsSpecialNeeds" xml:space="preserve">
+    <value>احتياجات خاصة ؟</value>
+  </data>
+  <data name="lbToDate" xml:space="preserve">
+    <value>إلى تاريخ</value>
+  </data>
+  <data name="lbToTime" xml:space="preserve">
+    <value>إلى الساعة</value>
+  </data>
+  <data name="lbWebSite" xml:space="preserve">
+    <value>الموقع الإلكتروني</value>
+  </data>
+  <data name="lbWorkingDays" xml:space="preserve">
+    <value>عدد أيام العمل</value>
+  </data>
+  <data name="lbWorkingHours" xml:space="preserve">
+    <value>عدد ساعات العمل</value>
+  </data>
+  <data name="lbFavoriteDayCares" xml:space="preserve">
+    <value>الحضانات المفضلة</value>
+  </data>
+  <data name="lbNo" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="lbTypeMessage" xml:space="preserve">
+    <value>اكتب رسالتك</value>
+  </data>
+  <data name="msgMissedDayCareAdminId" xml:space="preserve">
+    <value>رقم أدمن الحضانة غير موجود</value>
+  </data>
+  <data name="lbAttendance" xml:space="preserve">
+    <value>سجل الحضور</value>
+  </data>
+  <data name="lbClasses" xml:space="preserve">
+    <value>الفصول</value>
+  </data>
+  <data name="lbMyChildren" xml:space="preserve">
+    <value>أطفالي</value>
+  </data>
+  <data name="lbAbsent" xml:space="preserve">
+    <value>الغياب</value>
+  </data>
+  <data name="lbAttended" xml:space="preserve">
+    <value>الحضور</value>
+  </data>
+  <data name="lbClassName" xml:space="preserve">
+    <value>اسم الفصل</value>
+  </data>
+  <data name="lbKidsCount" xml:space="preserve">
+    <value>عدد الأطفال</value>
+  </data>
+  <data name="lbClass" xml:space="preserve">
+    <value>الفصل</value>
+  </data>
+  <data name="lbAddChild" xml:space="preserve">
+    <value>إضافة الطفل</value>
+  </data>
+  <data name="lbAddress" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="lbBirthDate" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="lbChildData" xml:space="preserve">
+    <value>بيانات الطفل</value>
+  </data>
+  <data name="lbChildName" xml:space="preserve">
+    <value>اسم الطفل</value>
+  </data>
+  <data name="lbContactData" xml:space="preserve">
+    <value>بيانات التواصل</value>
+  </data>
+  <data name="lbHealthCondition" xml:space="preserve">
+    <value>الحالة الصحية</value>
+  </data>
+  <data name="lbImages" xml:space="preserve">
+    <value>الصور</value>
+  </data>
+  <data name="lbParentData" xml:space="preserve">
+    <value>بيانات الوالدين</value>
+  </data>
+  <data name="lbSiblingsNo" xml:space="preserve">
+    <value>عدد الأخوة</value>
+  </data>
+  <data name="lbSpecialNeeds" xml:space="preserve">
+    <value>الاحتياجات الخاصة</value>
+  </data>
+  <data name="lbUsePhoto" xml:space="preserve">
+    <value>استخدام صور طفلي</value>
+  </data>
+  <data name="lbWhatToKnow" xml:space="preserve">
+    <value>أريد أعرف عن طفلي</value>
+  </data>
+  <data name="lbAddMore" xml:space="preserve">
+    <value>أضف المزيد</value>
+  </data>
+  <data name="lbContactName" xml:space="preserve">
+    <value>اسم القريب</value>
+  </data>
+  <data name="lbContactNo" xml:space="preserve">
+    <value>رقم الاتصال</value>
+  </data>
+  <data name="lbEmergencyContact" xml:space="preserve">
+    <value>بيانات اتصال الطوارىء</value>
+  </data>
+  <data name="lbFatherAddress" xml:space="preserve">
+    <value>عنوان الأب</value>
+  </data>
+  <data name="lbFatherMobile" xml:space="preserve">
+    <value>رقم جوال الأب</value>
+  </data>
+  <data name="lbFatherName" xml:space="preserve">
+    <value>اسم الأب</value>
+  </data>
+  <data name="lbFatherNationalId" xml:space="preserve">
+    <value>رقم هوية الأب</value>
+  </data>
+  <data name="lbHomeWays" xml:space="preserve">
+    <value>المسئول عن توصيل الطفل للمنزل يومياً</value>
+  </data>
+  <data name="lbMotherAddress" xml:space="preserve">
+    <value>عنوان الأم</value>
+  </data>
+  <data name="lbMotherMobile" xml:space="preserve">
+    <value>رقم جوال الأم</value>
+  </data>
+  <data name="lbMotherName" xml:space="preserve">
+    <value>اسم الأم</value>
+  </data>
+  <data name="lbMotherNationalId" xml:space="preserve">
+    <value>رقم هوية الأم</value>
+  </data>
+  <data name="lbRelation" xml:space="preserve">
+    <value>صلة القرابة</value>
+  </data>
+  <data name="lbChildFace" xml:space="preserve">
+    <value>صورة الطفل</value>
+  </data>
+  <data name="lbEndDate" xml:space="preserve">
+    <value>تاريخ الإنتهاء</value>
+  </data>
+  <data name="lbFatherData" xml:space="preserve">
+    <value>بيانات الأب</value>
+  </data>
+  <data name="lbFatherNationalIdImage" xml:space="preserve">
+    <value>صورة رقم هوية الأب</value>
+  </data>
+  <data name="lbMotherData" xml:space="preserve">
+    <value>بيانات الأم</value>
+  </data>
+  <data name="lbMotherNationalIdImage" xml:space="preserve">
+    <value>صورة رقم هوية الأم</value>
+  </data>
+  <data name="lbStartDate" xml:space="preserve">
+    <value>تاريخ البدء</value>
+  </data>
+  <data name="msgChildAddedSuccessfully" xml:space="preserve">
+    <value>تم إضافة الطفل بنجاح</value>
+  </data>
+  <data name="msgReqBirthDate" xml:space="preserve">
+    <value>من فضلك أدخل تاريخ الميلاد</value>
+  </data>
+  <data name="msgReqChildAddress" xml:space="preserve">
+    <value>من فضلك أدخل عنوان الطفل</value>
+  </data>
+  <data name="msgReqChildFace" xml:space="preserve">
+    <value>من فضلك اختر صورة الطفل</value>
+  </data>
+  <data name="msgReqChildName" xml:space="preserve">
+    <value>من فضلك أدخل اسم الطفل</value>
+  </data>
+  <data name="msgReqChildNationalId" xml:space="preserve">
+    <value>من فضلك أدخل رقم هوية الطفل</value>
+  </data>
+  <data name="msgReqEmergencyMobile" xml:space="preserve">
+    <value>من فضلك أدخل رقم الجوال (اتصال الطوارىء)</value>
+  </data>
+  <data name="msgReqEmergencyName" xml:space="preserve">
+    <value>من فضلك أدخل الاسم (اتصال الطوارىء)</value>
+  </data>
+  <data name="msgReqEmergencyRelation" xml:space="preserve">
+    <value>من فضلك اختر صلة القرابة (اتصال الطوارىء)</value>
+  </data>
+  <data name="msgReqEndDate" xml:space="preserve">
+    <value>من فضلك أدخل تاريخ النهاية</value>
+  </data>
+  <data name="msgReqFatherAddress" xml:space="preserve">
+    <value>من فضلك أدخل عنوان الأب</value>
+  </data>
+  <data name="msgReqFatherId" xml:space="preserve">
+    <value>من فضلك اختر صورة هوية الأب</value>
+  </data>
+  <data name="msgReqFatherMobile" xml:space="preserve">
+    <value>من فضلك أدخل رقم جوال الأب</value>
+  </data>
+  <data name="msgReqFatherName" xml:space="preserve">
+    <value>من فضلك أدخل اسم الأب</value>
+  </data>
+  <data name="msgReqFatherNationalId" xml:space="preserve">
+    <value>من فضلك أدخل رقم هوية الأب</value>
+  </data>
+  <data name="msgReqHealthCondition" xml:space="preserve">
+    <value>من فضلك أدخل الحالة الصحية</value>
+  </data>
+  <data name="msgReqHomeRelationId" xml:space="preserve">
+    <value>من فضلك اختر صلة القرابة (المسئول عن الطفل)</value>
+  </data>
+  <data name="msgReqHomeRelationMobile" xml:space="preserve">
+    <value>من فضلك أدخل رقم الإتصال (المسئول عن الطفل)</value>
+  </data>
+  <data name="msgReqHomeRelationName" xml:space="preserve">
+    <value>من فضلك أدخل الإسم (المسئول عن الطفل)</value>
+  </data>
+  <data name="msgReqHomeRelationNationalId" xml:space="preserve">
+    <value>من فضلك أدخل رقم الهوية (المسئول عن الطفل)</value>
+  </data>
+  <data name="msgReqMotherAddress" xml:space="preserve">
+    <value>من فضلك أدخل عنوان الأم</value>
+  </data>
+  <data name="msgReqMotherId" xml:space="preserve">
+    <value>من فضلك اختر صورة هوية الأم</value>
+  </data>
+  <data name="msgReqMotherMobile" xml:space="preserve">
+    <value>من فضلك أدخل رقم جوال الأم</value>
+  </data>
+  <data name="msgReqMotherName" xml:space="preserve">
+    <value>من فضلك أدخل اسم الأم</value>
+  </data>
+  <data name="msgReqMotherNationalId" xml:space="preserve">
+    <value>من فضلك أدخل رقم هوية الأم</value>
+  </data>
+  <data name="msgReqSiblingsNumber" xml:space="preserve">
+    <value>من فضلك أدخل عدد الأخوة</value>
+  </data>
+  <data name="msgReqStartDate" xml:space="preserve">
+    <value>من فضلك أدخل تاريخ البدء</value>
+  </data>
+  <data name="msgReqWhatToKnow" xml:space="preserve">
+    <value>من فضلك أدخل ماتريد معرفته عن طفلك</value>
+  </data>
+  <data name="msgMissedParentId" xml:space="preserve">
+    <value>رقم الأب غير موجود</value>
+  </data>
+  <data name="msgMissedTeacherId" xml:space="preserve">
+    <value>رقم المعلّم غير موجود</value>
+  </data>
+  <data name="lbChildGallery" xml:space="preserve">
+    <value>صور الطفل</value>
+  </data>
+  <data name="lbDailyReports" xml:space="preserve">
+    <value>التقارير اليومية</value>
+  </data>
+  <data name="lbNotifyUs" xml:space="preserve">
+    <value>الإتصــــال</value>
+  </data>
+  <data name="lbRquestNewDayCare" xml:space="preserve">
+    <value>طلب الإنضمام لحضانة</value>
+  </data>
+  <data name="lbReports" xml:space="preserve">
+    <value>تقارير</value>
+  </data>
+  <data name="lbDayCare" xml:space="preserve">
+    <value>الحضانة</value>
+  </data>
+  <data name="msgRequestSent" xml:space="preserve">
+    <value>تم إرسال الطلب بنجاح</value>
+  </data>
+  <data name="msgSelectDayCare" xml:space="preserve">
+    <value>من فضلك اختر الحضانة أولاً</value>
+  </data>
+  <data name="lbContactParent" xml:space="preserve">
+    <value>التواصل مع الأب</value>
+  </data>
+  <data name="lbCreateReport" xml:space="preserve">
+    <value>إنشاء التقرير اليومي</value>
+  </data>
+  <data name="lbParentNotifications" xml:space="preserve">
+    <value>إشعارات الأب</value>
+  </data>
+  <data name="lbUploadGallery" xml:space="preserve">
+    <value>رفع الصور والفيديوهات</value>
+  </data>
+  <data name="lbViewChildProfile" xml:space="preserve">
+    <value>عرض بيانات الطفل</value>
+  </data>
+  <data name="lbAddActivity" xml:space="preserve">
+    <value>إضافة نشاط</value>
+  </data>
+  <data name="lbChildProgress" xml:space="preserve">
+    <value>التقييم اليومي</value>
+  </data>
+  <data name="lbDailyReportActivity" xml:space="preserve">
+    <value>الأنشطة اليومية</value>
+  </data>
+  <data name="lbDailyReportMedia" xml:space="preserve">
+    <value>الصور والفيديو</value>
+  </data>
+  <data name="lbGeneralNotes" xml:space="preserve">
+    <value>ملاحظات عامة</value>
+  </data>
+  <data name="lbActivityType" xml:space="preserve">
+    <value>نوع النشاط</value>
+  </data>
+  <data name="lbAddReport" xml:space="preserve">
+    <value>إضافة التقرير</value>
+  </data>
+  <data name="lbDesc" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="lbImportActivity" xml:space="preserve">
+    <value>إدراج النشاط</value>
+  </data>
+  <data name="lbNutritionType" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="lbTime" xml:space="preserve">
+    <value>الوقت</value>
+  </data>
+  <data name="lbPickPhoto" xml:space="preserve">
+    <value>اختيار صورة</value>
+  </data>
+  <data name="lbPickVideo" xml:space="preserve">
+    <value>اختيار فيديو</value>
+  </data>
+  <data name="lbTakePhoto" xml:space="preserve">
+    <value>التقاط صورة</value>
+  </data>
+  <data name="msgReqActivityType" xml:space="preserve">
+    <value>من فضلك اختر نوع النشاط</value>
+  </data>
+  <data name="msgReqDesc" xml:space="preserve">
+    <value>من فضلك أدخل الوصف</value>
+  </data>
+  <data name="msgReqNutritionType" xml:space="preserve">
+    <value>من فضلك اختر نوع التغذية</value>
+  </data>
+  <data name="msgReqTime" xml:space="preserve">
+    <value>من فضلك أدخل وقت النشاط</value>
+  </data>
+  <data name="msgReqGeneralNotes" xml:space="preserve">
+    <value>من فضلك أدخل الملاحظات العامة</value>
+  </data>
+  <data name="msgReportAddedSuccessfully" xml:space="preserve">
+    <value>تم إضافة التقرير بنجاح</value>
+  </data>
+  <data name="msgAddGalleryError" xml:space="preserve">
+    <value>حدث خطأ أثناء عملية الإضافة</value>
+  </data>
+  <data name="msgGalleryAddedSuccessfully" xml:space="preserve">
+    <value>تمت عملية الإضافة بنجاح</value>
+  </data>
+  <data name="lbAdd" xml:space="preserve">
+    <value>إضافة</value>
+  </data>
+  <data name="msgMissedChildId" xml:space="preserve">
+    <value>رقم الطفل غير موجود</value>
+  </data>
+  <data name="msgReqGalleryItems" xml:space="preserve">
+    <value>يجب اختيار صورة أو فيديو للإضافة</value>
+  </data>
+  <data name="lbChildProfile" xml:space="preserve">
+    <value>بيانات الطفل</value>
+  </data>
+  <data name="lbParentMobile" xml:space="preserve">
+    <value>رقم الوالد</value>
+  </data>
+  <data name="lbParentName" xml:space="preserve">
+    <value>اسم الوالد</value>
+  </data>
+  <data name="msgMissedReportId" xml:space="preserve">
+    <value>رقم التقرير غير موجود</value>
+  </data>
+  <data name="lbPlayVideo" xml:space="preserve">
+    <value>عرض الفيديو</value>
+  </data>
+  <data name="lbImageView" xml:space="preserve">
+    <value>عرض الصورة</value>
+  </data>
+  <data name="msgMissedSenderId" xml:space="preserve">
+    <value>رقم المرسل غير موجود</value>
+  </data>
+  <data name="lbWelcome" xml:space="preserve">
+    <value>مرحبا بك يا</value>
+  </data>
+  <data name="lbUserProfile" xml:space="preserve">
+    <value>ملف المستخدم</value>
+  </data>
+  <data name="msgReqOneRelation" xml:space="preserve">
+    <value>عفواً ، يجب وجود مسئول واحد على الأقل</value>
+  </data>
+  <data name="lbContactFamily" xml:space="preserve">
+    <value>التواصل مع العائلة</value>
+  </data>
+  <data name="lbApply" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
+  <data name="lbFilterDayCares" xml:space="preserve">
+    <value>تصفية الحضانات</value>
+  </data>
+  <data name="msgReqMessageText" xml:space="preserve">
+    <value>من فضلك اكتب الرسالة أولاً</value>
+  </data>
+</root>

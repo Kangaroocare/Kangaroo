@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Kangaroo.Views.MenuView">
+
+    <ContentView.Content>
+        <ScrollView>
+            <Grid Margin="0" Padding="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Margin="0" Padding="0" BackgroundColor="{StaticResource BrandColor}">
+                    
+                    <Image StyleClass="Circle" Source="{helpers:ImageResource Kangaroo.Images.person.png}" HeightRequest="90" 
+                           Margin="0,10,0,0" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"/>
+
+                    <Label x:Name="lbLogin" Text="{resx:TranslateExtension Text=lbLogin}" Style="{StaticResource MenuMainHeader}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Login_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Label x:Name="lbUserName" Style="{StaticResource MenuMainHeader}"/>
+
+                    <Label x:Name="lbUserEmail" Style="{StaticResource MenuSubHeader}"/>
+                    
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Margin="0" Padding="0" Spacing="15" BackgroundColor="{StaticResource BrandWhite}">
+
+                    <StackLayout x:Name="slMyProfile" HeightRequest="45" Orientation="Vertical" Spacing="10" Margin="0,10,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe883;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbMyProfile}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MyProfile_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slAddChild" HeightRequest="45" Orientation="Vertical" Spacing="10" IsVisible="false">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe86b;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbAddChild}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddChild_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slFavoriteDayCares" HeightRequest="45" Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe8b2;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbFavoriteDayCares}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FavoriteDayCares_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slSettings" HeightRequest="45" Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe8a4;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbSettings}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Settings_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slPrivacyPolicy" HeightRequest="45" Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe82a;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbPrivacyPolicy}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slAbout" HeightRequest="45" Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe8d2;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbAbout}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AboutKangarooCommand}"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slContactUs" HeightRequest="45" Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe879;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbContactUs}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ContactUs_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <StackLayout x:Name="slLogout" HeightRequest="45" Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="&#xe834;" Style="{StaticResource MenuIcon}"/>
+                            <Label Text="{resx:TranslateExtension Text=lbLogout}" Style="{StaticResource MenuLabel}"/>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Logout_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

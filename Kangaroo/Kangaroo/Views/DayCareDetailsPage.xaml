@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="Kangaroo.Views.DayCareDetailsPage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <controls:Toolbar Title="{Binding DayCareDetails.daycare_name}" />
+
+            <Grid Grid.Row="1" Padding="15" Margin="0" RowSpacing="10" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="{Binding holiday_height}"/>
+                </Grid.RowDefinitions>
+
+                <ffimageloading:CachedImage x:Name="ffDayCareImage" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" 
+                    HeightRequest="180" WidthRequest="230" DownsampleToViewSize="true" Source="{Binding DayCareDetails.photo}" Margin="0">
+                </ffimageloading:CachedImage>
+
+                <StackLayout Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe859;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbWebSite}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.website_url, Mode=TwoWay}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe879;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbContactNumber}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.contact_number}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CallDayCareCommand}" CommandParameter="{Binding DayCareDetails.contact_number}"/>
+                    </StackLayout.GestureRecognizers> 
+                </StackLayout>
+
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe88d;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbDayCareDesc}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.description}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="4" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe877;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbInitialDate}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.init_date}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe8b6;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbIsSpecialNeeds}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.is_special_needs_text}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="6" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe8a5;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbWorkingDays}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.working_days}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="7" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                    <Label Text="&#xe8d6;" Style="{StaticResource MenuIcon}" Margin="0" WidthRequest="20" FontSize="15"/>
+                    <Label Text="{resx:TranslateExtension Text=lbWorkingHours}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                    <Label Text="{Binding DayCareDetails.working_hours}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                </StackLayout>
+
+
+                <Label x:Name="lbHolidays" Grid.Row="8" Grid.ColumnSpan="4" Text="{resx:Translate lbHolidays}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" FontSize="17"/>
+
+                <BoxView Grid.Row="9" Grid.ColumnSpan="4" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" />
+
+                <sflv:SfListView x:Name="lvHolidays" Grid.Row="10" Grid.ColumnSpan="4" ItemsSource="{Binding DayCareDetails.holidays, Mode=TwoWay}" FlowDirection="MatchParent" 
+                         Orientation="Vertical" ItemSpacing="5" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" IsScrollBarVisible="False" Margin="0,5,0,0">
+                    <sflv:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid x:Name="HolidayItem" HeightRequest="85" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="0" RowSpacing="5" ColumnSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25*"/>
+                                        <ColumnDefinition Width="25*"/>
+                                        <ColumnDefinition Width="25*"/>
+                                        <ColumnDefinition Width="25*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                                        <!--<Label Text="{resx:TranslateExtension Text=lbHolidayType}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>-->
+                                        <Label Text="{Binding holiday_type}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="12" Margin="0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                                        <Label Text="{resx:TranslateExtension Text=lbFromDate}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                                        <Label Text="{Binding date_from}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                                        <Label Text="{resx:TranslateExtension Text=lbToDate}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                                        <Label Text="{Binding date_to}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                                        <Label Text="{resx:TranslateExtension Text=lbFromTime}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                                        <Label Text="{Binding time_from}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0" Padding="0" Spacing="3">
+                                        <Label Text="{resx:TranslateExtension Text=lbToTime}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" FontSize="10" Margin="0"/>
+                                        <Label Text="{Binding time_to}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelBold}" TextColor="{StaticResource BrandColor}" FontSize="11" Margin="0"/>
+                                    </StackLayout>
+
+                                    <BoxView Grid.Row="3" Grid.ColumnSpan="4" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </sflv:SfListView.ItemTemplate>
+                </sflv:SfListView>
+            </Grid>
+
+            <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+        </Grid>
+    </ScrollView>
+
+</controls:BasePage>

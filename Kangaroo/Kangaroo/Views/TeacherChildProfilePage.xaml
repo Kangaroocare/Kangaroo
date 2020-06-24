@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="Kangaroo.Views.TeacherChildProfilePage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <controls:Toolbar Title="{Binding ChildData.child_name}" />
+
+            <Grid Grid.Row="1" Padding="15" Margin="0" RowSpacing="20" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <ffimageloading:CachedImage x:Name="ffChildFace" Grid.Row="0" Grid.ColumnSpan="4" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" 
+                    HeightRequest="180" WidthRequest="180" DownsampleToViewSize="true" Source="{Binding ChildData.child_face}" Margin="0">
+                </ffimageloading:CachedImage>
+
+                <BoxView Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="10">
+                    <Label Text="&#xe8d2;" Style="{StaticResource MenuIcon}" TextColor="{StaticResource BrandColor}" Margin="0" WidthRequest="40" FontSize="22"/>
+                    <Label Text="{resx:TranslateExtension Text=lbViewChildProfile}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" FontSize="17" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenChildProfileCommand}" CommandParameter="{Binding ChildData.child_id}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="10">
+                    <Label Text="&#xe8bb;" Style="{StaticResource MenuIcon}" TextColor="{StaticResource BrandColor}" Margin="0" WidthRequest="40" FontSize="22"/>
+                    <Label Text="{resx:TranslateExtension Text=lbContactFamily}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" FontSize="17" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ContactParentCommand}" CommandParameter="{Binding ChildData}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="4" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="10">
+                    <Label Text="&#xe843;" Style="{StaticResource MenuIcon}" TextColor="{StaticResource BrandColor}" Margin="0" WidthRequest="40" FontSize="19"/>
+                    <Label Text="{resx:TranslateExtension Text=lbDailyReports}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" FontSize="17" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DailyReportCommand}" CommandParameter="{Binding ChildData}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="10">
+                    <Label Text="&#xe845;" Style="{StaticResource MenuIcon}" TextColor="{StaticResource BrandColor}" Margin="0" WidthRequest="40" FontSize="22"/>
+                    <Label Text="{resx:TranslateExtension Text=lbCreateReport}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" FontSize="17" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CreateReportCommand}" CommandParameter="{Binding ChildData}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="6" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="10">
+                    <Label Text="&#xe8b7;" Style="{StaticResource MenuIcon}" TextColor="{StaticResource BrandColor}" Margin="0" WidthRequest="40" FontSize="22"/>
+                    <Label Text="{resx:TranslateExtension Text=lbUploadGallery}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" FontSize="17" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding UploadGalleryCommand}" CommandParameter="{Binding ChildData.child_id}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <!--<StackLayout Grid.Row="7" Grid.ColumnSpan="4" Orientation="Horizontal" Margin="0" Padding="0" Spacing="10">
+                    <Label Text="&#xf0f3;" Style="{StaticResource MenuIcon}" TextColor="{StaticResource BrandColor}" Margin="0" WidthRequest="40" FontSize="22"/>
+                    <Label Text="{resx:TranslateExtension Text=lbParentNotifications}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" FontSize="17" Margin="0"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ParentNotificationsCommand}" CommandParameter="{Binding ChildData.parent_id}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>-->
+            </Grid>
+
+            <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" VerticalOptions="Start" Margin="150"/>
+        </Grid>
+    </ScrollView>
+
+</controls:BasePage>

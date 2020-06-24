@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Kangaroo.Themes.AppTheme">
+
+    <Color x:Key="BrandColor">#703081</Color>
+    <Color x:Key="AccentColor">#703081</Color>
+    <Color x:Key="SecondaryColor">#30ccff</Color>
+    <Color x:Key="BgColor">#ffffff</Color>
+
+    <Color x:Key="TextColor">#939393</Color>
+    <Color x:Key="SplashBgColor">#ffffff</Color>
+
+    <Color x:Key="BrandRed">#e76363</Color>
+    <Color x:Key="BrandGreen">#84be70</Color>
+    <Color x:Key="BrandYellow">#eab15f</Color>
+    <Color x:Key="BrandWhite">#ffffff</Color>
+
+    <Color x:Key="GrayLightest">#f6f6f6</Color>
+    <Color x:Key="GrayLighter">#e5e5e5</Color>
+    <Color x:Key="GrayLight">#b2b2b2</Color>
+    <Color x:Key="Gray">#6f6f6f</Color>
+    <Color x:Key="GrayDark">#5c5c5c</Color>
+    <Color x:Key="GrayDarker">#3c3c3c</Color>
+    <Color x:Key="GrayDarkest">#333333</Color>
+    <Color x:Key="GrayDarkerR">#1A1A1A</Color>
+
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="NavBg">#703081</Color>
+    
+</ResourceDictionary>

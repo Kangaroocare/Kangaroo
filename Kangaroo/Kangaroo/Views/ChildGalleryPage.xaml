@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+             x:Class="Kangaroo.Views.ChildGalleryPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Toolbar x:Name="barTitle" />
+
+        <sflv:SfListView x:Name="lvChildGallery" Grid.Row="1" ItemsSource="{Binding lstChildGallery, Mode=TwoWay}" FlowDirection="MatchParent" Orientation="Vertical" ItemSpacing="5" 
+                                 AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" IsScrollBarVisible="False" Margin="0,10,0,0">
+
+            <sflv:SfListView.DataSource>
+                <data:DataSource>
+                    <data:DataSource.GroupDescriptors>
+                        <data:GroupDescriptor PropertyName="uploaded_date"/>
+                    </data:DataSource.GroupDescriptors>
+                </data:DataSource>
+            </sflv:SfListView.DataSource>
+            
+            <sflv:SfListView.LayoutManager>
+                <sflv:GridLayout SpanCount="2"/>
+            </sflv:SfListView.LayoutManager>
+
+            <sflv:SfListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <controls:CustomLabel Text="{Binding Key}" TextColor="{StaticResource BrandColor}" FontSize="14" Margin="10,0" />
+                    </ViewCell>
+                </DataTemplate>
+            </sflv:SfListView.GroupHeaderTemplate>
+
+            <sflv:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame x:Name="GalleryItem" HeightRequest="150" CornerRadius="5" BorderColor="{StaticResource BrandColor}" BackgroundColor="{StaticResource BgColor}" Margin="5" Padding="5">
+
+                            <ffimageloading:CachedImage Aspect="AspectFit" DownsampleToViewSize="true" Source="{Binding image}" Margin="5,0"/>
+
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvChildGallery}, Path=BindingContext}" Command="{Binding OpenFileCommand}" 
+                                                      CommandParameter="{Binding Source={x:Reference GalleryItem}, Path=BindingContext}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </sflv:SfListView.ItemTemplate>
+        </sflv:SfListView>
+
+        <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+    </Grid>
+
+</controls:BasePage>

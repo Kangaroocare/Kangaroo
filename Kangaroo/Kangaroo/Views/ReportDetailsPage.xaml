@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:controls="clr-namespace:Kangaroo.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Kangaroo.Views.ReportDetailsPage" Appearing="BasePage_Appearing">
+
+    <Grid Padding="0" Margin="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Toolbar Title="{Binding current_view_title}"/>
+
+        <ContentView x:Name="ctnReportDetailsView" Grid.Row="1" Content="{Binding current_view, Mode=TwoWay}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+        <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+    </Grid>
+</controls:BasePage>

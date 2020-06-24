@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kangaroo.Controls.Toolbar"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers">
+    
+    <ContentView.Content>
+        <Grid x:Name="grdHeader" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" Style="{StaticResource ToolbarStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout x:Name="slMenu" BackgroundColor="Transparent" WidthRequest="60" Grid.Column="0" Padding="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="False">
+                <Image x:Name="btnMenu" VerticalOptions="Center" HorizontalOptions="Center" Source="{helpers:ImageResource Kangaroo.Images.menu.png}" WidthRequest="40" HeightRequest="42" Aspect="Fill"/>
+
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Menu_Tapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout x:Name="slBack" BackgroundColor="Transparent" WidthRequest="60" Grid.Column="0" Padding="0" HorizontalOptions="Start" VerticalOptions="Center">
+                <Image x:Name="btnBack" VerticalOptions="Center" HorizontalOptions="Center" Source="{helpers:ImageResource Kangaroo.Images.right_arrow.png}" WidthRequest="40" HeightRequest="42" Aspect="Fill"/>
+                
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Back_Tapped" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout x:Name="slTitle" Grid.Column="1" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="lbTitle" Style="{StaticResource ToolbarTitle}"/>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

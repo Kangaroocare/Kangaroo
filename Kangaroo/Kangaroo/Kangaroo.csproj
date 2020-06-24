@@ -1,0 +1,245 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\LookupModel.cs" />
+    <Compile Remove="Views\MainPage.xaml.cs" />
+    <Compile Remove="Views\MenuPage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\MainPage.xaml" />
+    <EmbeddedResource Remove="Views\MenuPage.xaml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Images\back-icon-r.png" />
+    <None Remove="Images\back-right.png" />
+    <None Remove="Images\defaultImg.jpg" />
+    <None Remove="Images\defaultVid.png" />
+    <None Remove="Images\filter.png" />
+    <None Remove="Images\gradient-bg.jpg" />
+    <None Remove="Images\left_arrow.png" />
+    <None Remove="Images\LoginLogo.png" />
+    <None Remove="Images\menu.png" />
+    <None Remove="Images\person.png" />
+    <None Remove="Images\right_arrow.png" />
+    <None Remove="Images\splash.png" />
+    <None Remove="Images\wave.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\defaultImg.jpg" />
+    <EmbeddedResource Include="Images\defaultVid.png" />
+    <EmbeddedResource Include="Images\filter.png" />
+    <EmbeddedResource Include="Images\left_arrow.png" />
+    <EmbeddedResource Include="Images\LoginLogo.png" />
+    <EmbeddedResource Include="Images\menu.png" />
+    <EmbeddedResource Include="Images\person.png" />
+    <EmbeddedResource Include="Images\right_arrow.png" />
+    <EmbeddedResource Include="Images\splash.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
+    <PackageReference Include="Com.OneSignal" Version="3.7.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Plugin.MediaManager.Forms" Version="0.6.5" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.2.0.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.2.0.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.2.0.39" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.2.0.39" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="4.0.0.190-beta" />
+    <PackageReference Include="Xam.Plugin.DownloadManager" Version="1.0.0.1" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="4.0.0.10-beta" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.1" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.2.0.709249" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Services\" />
+    <Folder Include="Themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\AlertPopUp.xaml.cs">
+      <DependentUpon>AlertPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\FilterDayCares.xaml.cs">
+      <DependentUpon>FilterDayCares.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\SendMessagePopup.xaml.cs">
+      <DependentUpon>SendMessagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Stepbar.xaml.cs">
+      <DependentUpon>Stepbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\ToolBar.xaml.cs">
+      <DependentUpon>Toolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddGalleryPage.xaml.cs">
+      <DependentUpon>AddGalleryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ImageViewerPage.xaml.cs">
+      <DependentUpon>ImageViewerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\VideoPlayerPage.xaml.cs">
+      <DependentUpon>VideoPlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReportDetailsPage.xaml.cs">
+      <DependentUpon>ReportDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChildProfilePage.xaml.cs">
+      <DependentUpon>ChildProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NotificationPage.xaml.cs">
+      <DependentUpon>NotificationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddReportPage.xaml.cs">
+      <DependentUpon>AddReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddChildPage.xaml.cs">
+      <DependentUpon>AddChildPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChildGalleryPage.xaml.cs">
+      <DependentUpon>ChildGalleryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddReportViews\AddActivityView.xaml.cs">
+      <DependentUpon>AddActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddReportViews\ActivityView.xaml.cs">
+      <DependentUpon>ActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddReportViews\MediaView.xaml.cs">
+      <DependentUpon>MediaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReportViews\ReportActivityView.xaml.cs">
+      <DependentUpon>ReportActivityView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReportViews\ReportMediaView.xaml.cs">
+      <DependentUpon>ReportMediaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TeacherChildProfilePage.xaml.cs">
+      <DependentUpon>TeacherChildProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ParentChildProfilePage.xaml.cs">
+      <DependentUpon>ParentChildProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChildReportsPage.xaml.cs">
+      <DependentUpon>ChildReportsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RequestDayCarePage.xaml.cs">
+      <DependentUpon>RequestDayCarePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeViews\CheckInView.xaml.cs">
+      <DependentUpon>CheckInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeViews\ClassesView.xaml.cs">
+      <DependentUpon>ClassesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeViews\MyChildrenView.xaml.cs">
+      <DependentUpon>MyChildrenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeViews\DayCaresView.xaml.cs">
+      <DependentUpon>DayCaresView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeViews\MapView.xaml.cs">
+      <DependentUpon>MapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DayCareDetailsPage.xaml.cs">
+      <DependentUpon>DayCareDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\WebViewPage.xaml.cs">
+      <DependentUpon>WebViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UserProfilePage.xaml.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResetPasswordPage.xaml.cs">
+      <DependentUpon>ResetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ForgetPasswordPage.xaml.cs">
+      <DependentUpon>ForgetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ActivationPage.xaml.cs">
+      <DependentUpon>ActivationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeViews\NotificationView.xaml.cs">
+      <DependentUpon>NotificationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CreateUserPage.xaml.cs">
+      <DependentUpon>CreateUserPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildViews\ChildView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildViews\ContactView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildViews\ImagesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ChildViews\ParentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomeViews\DayCaresView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomeViews\MenuView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomeViews\NotificationView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CreateUserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

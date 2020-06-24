@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="Kangaroo.Views.MessageDetailsPage" Appearing="BasePage_Appearing">
+
+    <Grid Padding="0" Margin="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Toolbar x:Name="barTitle"/>
+
+        <Grid Grid.Row="1" Padding="5" Margin="0" RowSpacing="10" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <sflv:SfListView x:Name="lvMessages" Grid.Row="0" ColumnSpacing="0" ItemSpacing="5" ItemsSource="{Binding lstMessageDetails}" Orientation="Vertical" SelectionBackgroundColor="Transparent" 
+                             FlowDirection="MatchParent" AutoFitMode="Height" Margin="2,0,2,0" Padding="0">
+                <sflv:SfListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid x:Name="MessageItem" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Text="{Binding datetime}" Style="{StaticResource LabelButton}" HorizontalOptions="{Binding text_align}" VerticalOptions="Center" FontSize="10"/>
+                            <Frame Grid.Row="1" CornerRadius="3" HasShadow="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{Binding background_color}" 
+                                   BorderColor="{Binding background_color}" Padding="10,5,10,5" Margin="{Binding message_margin}">
+                                
+                                <Label Grid.Column="1" Text="{Binding message}" Style="{StaticResource LabelButton}" TextColor="{Binding font_color}"  
+                                       HorizontalOptions="{Binding text_align}" VerticalOptions="Center" FontSize="12"/>
+                            </Frame>
+                        </Grid>
+                        
+                    </DataTemplate>
+                </sflv:SfListView.ItemTemplate>
+            </sflv:SfListView>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <controls:CustomEntry x:Name="txtReply" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Start" Placeholder="{resx:TranslateExtension Text=lbTypeMessage}" FontSize="12" Margin="0,0,10,0"/>
+
+                <Frame CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" WidthRequest="60" HeightRequest="25"  HorizontalOptions="End" Margin="0" Padding="0">
+                    <Label Text="{resx:TranslateExtension Text=lbSend}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" FontSize="10" Margin="0"/>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="cmdSend_Clicked"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+            
+        </Grid>
+
+        <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+    </Grid>
+</controls:BasePage>

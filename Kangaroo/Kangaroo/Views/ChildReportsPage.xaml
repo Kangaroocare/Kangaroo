@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Kangaroo.Views.ChildReportsPage" Appearing="BasePage_Appearing">
+
+    <Grid Padding="0" Margin="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Toolbar x:Name="barTitle"/>
+
+        <sflv:SfListView x:Name="lvChildReports" Grid.Row="1" ItemsSource="{Binding lstChildReports, Mode=TwoWay}" FlowDirection="MatchParent" 
+                         Orientation="Vertical" ItemSpacing="5" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" IsScrollBarVisible="False">
+            <sflv:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+
+                        <Grid x:Name="ReportItem" HeightRequest="55" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Spacing="0">
+                                <Label Text="{Binding report_day}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="16"/>
+                            </StackLayout>
+
+                            <Label Grid.Row="0" Grid.Column="2" Text="&#xe88d;" Style="{StaticResource MenuIcon}" FontSize="20" TextColor="{StaticResource GrayLight}" Margin="0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvChildReports}, Path=BindingContext}" Command="{Binding ReportDetailsCommand}" 
+                                                          CommandParameter="{Binding Source={x:Reference ReportItem}, Path=BindingContext.report_id}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <BoxView Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvChildReports}, Path=BindingContext}" Command="{Binding ReportDetailsCommand}" 
+                                                      CommandParameter="{Binding Source={x:Reference ReportItem}, Path=BindingContext.report_id}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </sflv:SfListView.ItemTemplate>
+        </sflv:SfListView>
+
+        <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+    </Grid>
+</controls:BasePage>

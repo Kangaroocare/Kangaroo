@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             x:Class="Kangaroo.Views.ActivationPage">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <controls:Toolbar Title="{resx:Translate Text=lbActivation}"/>
+
+            <!--<Label x:Name="lbTitle" Style="{StaticResource ToolbarTitle}" Text="{resx:Translate Text=lbActivation}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>-->
+
+            <Grid Grid.Row="1" Padding="0" Margin="15" RowSpacing="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <controls:CustomLabel x:Name="lbActivationCode" Grid.Row="0" Grid.Column="0" Margin="0,13,0,0" Text="{resx:Translate lbActivationCode}"/>
+                <controls:CustomEntry x:Name="txtActivationCode" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Keyboard="Numeric"/>
+
+                <Frame x:Name="cmdActivate" Grid.Row="1" Grid.ColumnSpan="2" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40" Margin="30,0" Padding="0">
+                    <Label Text="{resx:TranslateExtension Text=lbActivation}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CmdActivate_Clicked"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame x:Name="cmdResend" Grid.Row="2" Grid.ColumnSpan="2" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource GrayLighter}" IsEnabled="False" HeightRequest="40" Margin="30,0" Padding="0">
+                    <Label Text="{resx:TranslateExtension Text=lbResend}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CmdResend_Clicked"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+            <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+        </Grid>
+    </ScrollView>
+    
+</controls:BasePage>

@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:converters="clr-namespace:Kangaroo.Converters"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="Kangaroo.Views.CheckInView" BackgroundColor="{StaticResource GrayLightest}">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:StringToBooleanConverter x:Key="stringToBoolean" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid Margin="10,10,10,0" Padding="0" ColumnSpacing="0" RowSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ffimageloading:CachedImage x:Name="ffHeader" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" 
+                    HeightRequest="70" WidthRequest="200" DownsampleToViewSize="true" Source="{helpers:ImageResource Kangaroo.Images.LoginLogo.png}" Margin="0,25,0,0">
+            </ffimageloading:CachedImage>
+
+            <controls:CustomLabel x:Name="lbClass" Grid.Row="1" Grid.Column="0" Text="{resx:Translate lbClass}" TextColor="{StaticResource BrandColor}" FontSize="16" Margin="0,13,0,0"/>
+
+            <Picker x:Name="cmbClass" Grid.Row="1" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource TextColor}" 
+                    Title="{resx:Translate lbClass}" ItemsSource="{Binding lstClasses}" ItemDisplayBinding="{Binding class_name}" 
+                    SelectedItem="{Binding selected_class, Mode=TwoWay}" FontFamily="{StaticResource TextFont}" FontSize="14"/>
+
+            <sflv:SfListView x:Name="lvClassChildren" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding lstClassChildren, Mode=TwoWay}" 
+                             FlowDirection="MatchParent" Orientation="Vertical" ItemSpacing="0" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" 
+                             IsScrollBarVisible="False" Margin="0,15,0,0">
+                <sflv:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="ChildItem" HeightRequest="100" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BgColor}" 
+                                  Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="50*"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="35"/>
+                                    <ColumnDefinition Width="35"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Aspect="AspectFit" DownsampleToViewSize="true" 
+                                                            Source="{Binding child_face}" StyleClass="Circle" Margin="3">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation />
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
+
+                                <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Text="{Binding child_name}" Style="{StaticResource LabelButton}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="14"/>
+
+                                <BoxView Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Style="{StaticResource vSeparator}" VerticalOptions="FillAndExpand" Margin="0,15"/>
+
+                                <Switch x:Name="swhAttendance" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" IsToggled="{Binding is_attend, Converter={StaticResource stringToBoolean}, Mode=TwoWay}" 
+                                        OnColor="{StaticResource BrandColor}" ThumbColor="{StaticResource BgColor}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+
+                                <!--<Label Grid.Row="1" Grid.Column="3" Text="&#xe879;" Style="{StaticResource MenuIcon}" FontSize="20" TextColor="{StaticResource BrandColor}" Margin="0">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvClassChildren}, Path=BindingContext}" Command="{Binding DialParentCommand}" 
+                                                              CommandParameter="{Binding Source={x:Reference ChildItem}, Path=BindingContext.parent_mobile}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>-->
+
+                                <Label Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Text="&#xf0f3;" Style="{StaticResource MenuIcon}" FontSize="20" TextColor="{StaticResource BrandColor}" Margin="0">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvClassChildren}, Path=BindingContext}" Command="{Binding ContactParentCommand}" 
+                                                              CommandParameter="{Binding Source={x:Reference ChildItem}, Path=BindingContext}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <BoxView Grid.Row="2" Grid.ColumnSpan="5" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvClassChildren}, Path=BindingContext}" Command="{Binding TeacherChildProfileCommand}" 
+                                                          CommandParameter="{Binding Source={x:Reference ChildItem}, Path=BindingContext.child_id}"/>
+                                </Grid.GestureRecognizers>
+                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </sflv:SfListView.ItemTemplate>
+            </sflv:SfListView>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

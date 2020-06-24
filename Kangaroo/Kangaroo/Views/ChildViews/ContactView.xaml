@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="Kangaroo.Views.ChildViews.ContactView">
+
+    <Grid Padding="0" Margin="0" RowSpacing="3" ColumnSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="4">
+            <Grid Padding="0" Margin="5,15,5,10" RowSpacing="3" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="{Binding home_relations_height}"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+
+                <!--Home Ways-->
+                <Label x:Name="lbHomeWay" Grid.Row="0" Grid.ColumnSpan="3" Text="{resx:Translate lbHomeWays}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" FontSize="15" Margin="0,5,0,0"/>
+
+                <Button x:Name="cmdAddChild" Grid.Row="0" Grid.Column="3" Text="+" WidthRequest="40" HeightRequest="40" CornerRadius="25" Command="{Binding AddRelationCommand}" 
+                        HorizontalOptions="End" VerticalOptions="End" FontSize="20" BackgroundColor="{StaticResource BrandColor}" TextColor="{StaticResource BrandWhite}" Padding="0" Margin="0"/>
+
+                <sflv:SfListView x:Name="lvHomeRelations" Grid.Row="1" Grid.ColumnSpan="4" ItemsSource="{Binding lstHomeRelations, Mode=TwoWay}" FlowDirection="MatchParent"
+                                Orientation="Vertical" ItemSpacing="5" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" IsScrollBarVisible="False" Margin="0,5,0,0">
+                    <sflv:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame x:Name="RelationItem" CornerRadius="5" HeightRequest="155" HorizontalOptions="FillAndExpand" BorderColor="{StaticResource GrayLight}" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="8,10,8,8">
+                                    <Grid Margin="0" Padding="0" RowSpacing="5" ColumnSpacing="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25*"/>
+                                            <ColumnDefinition Width="25*"/>
+                                            <ColumnDefinition Width="25*"/>
+                                            <ColumnDefinition Width="25*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="0" Spacing="0">
+                                            <controls:CustomLabel Text="{resx:Translate lbName}" FontSize="12"/>
+                                            <controls:CustomEntry Text="{Binding contact_name}"/>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Padding="0" Margin="0" Spacing="0">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0" Padding="0" Spacing="0">
+                                                <controls:CustomLabel Text="{resx:Translate lbContactNo}" FontSize="12" HorizontalOptions="FillAndExpand"/>
+
+                                                <Label Text="&#xe81c;" Style="{StaticResource MenuIcon}" WidthRequest="45" VerticalOptions="Start" HorizontalOptions="End" HorizontalTextAlignment="End">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvHomeRelations}, Path=BindingContext}" Command="{Binding RemoveRelationCommand}" 
+                                                              CommandParameter="{Binding Source={x:Reference RelationItem}, Path=BindingContext.serial}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                            <controls:CustomEntry Text="{Binding contact_number}"/>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="0" Spacing="0">
+                                            <controls:CustomLabel Text="{resx:Translate lbRelation}" FontSize="12"/>
+                                            <Picker VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource TextColor}" Title="{resx:Translate lbRelation}" ItemsSource="{Binding lstRelations}" 
+                                                    ItemDisplayBinding="{Binding relation_name}" SelectedItem="{Binding selected_relation, Mode=TwoWay}" FontFamily="{StaticResource TextFont}" FontSize="14"/>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Padding="0" Margin="0" Spacing="0">
+                                            <controls:CustomLabel Text="{resx:Translate lbNationalId}" FontSize="12"/>
+                                            <controls:CustomEntry Text="{Binding national_id}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </sflv:SfListView.ItemTemplate>
+                </sflv:SfListView>
+
+                <!--Emergency Contact-->
+                <Label x:Name="lbEmergencyContact" Grid.Row="2" Grid.ColumnSpan="4" Text="{resx:Translate lbEmergencyContact}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" FontSize="15" Margin="0,15,0,5"/>
+
+                <Frame Grid.Row="3" Grid.ColumnSpan="4" CornerRadius="5" HeightRequest="155" HorizontalOptions="FillAndExpand" BorderColor="{StaticResource GrayLight}" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="8,10,8,8">
+                    <Grid Margin="0" Padding="0" RowSpacing="5" ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="25*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                            <controls:CustomLabel x:Name="lbEmName" Text="{resx:Translate lbName}" FontSize="12" />
+                            <controls:CustomEntry x:Name="txtEmName" Text="{Binding child_data.em_contact_name}" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="0" Margin="0" Spacing="0">
+                            <controls:CustomLabel x:Name="lbEmMobile" Text="{resx:Translate lbMobile}" FontSize="12" />
+                            <controls:CustomEntry x:Name="txtEmMobile" Text="{Binding child_data.em_contact_mobile}" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Padding="0" Margin="0" Spacing="0">
+                            <controls:CustomLabel x:Name="lbEmRelation" Text="{resx:Translate lbRelation}" FontSize="12"/>
+                            <Picker x:Name="cmbEmRelation" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource TextColor}" Title="{resx:Translate lbRelation}" 
+                                    ItemsSource="{Binding lstRelations}" ItemDisplayBinding="{Binding relation_name}" SelectedItem="{Binding selected_em_relation, Mode=TwoWay}" FontFamily="{StaticResource TextFont}" FontSize="14"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+        </ScrollView>
+
+        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40" Margin="5,0" Padding="0">
+            <Label Text="{resx:TranslateExtension Text=lbPrevious}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding PreviousCommand}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40" Margin="5,0" Padding="0">
+            <Label Text="{resx:TranslateExtension Text=lbNext}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NextCommand}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+    </Grid>
+</ContentView>

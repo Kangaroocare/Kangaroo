@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             x:Class="Kangaroo.Views.ChildViews.ChildView">
+
+    <Grid Padding="0" Margin="0" RowSpacing="10" ColumnSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="4">
+            <Grid Padding="0" Margin="10,15,10,10" RowSpacing="10" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbNationalId" Text="{resx:Translate lbNationalId}" FontSize="12" />
+                    <controls:CustomEntry x:Name="txtNationalId" Text="{Binding child_data.national_id}" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbChildName" Text="{resx:Translate lbChildName}" FontSize="12" />
+                    <controls:CustomEntry x:Name="txtChildName" Text="{Binding child_data.child_name}" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbBirthDate" Text="{resx:Translate lbBirthDate}" FontSize="12" />
+                    <DatePicker x:Name="dtBirthDate" Date="{Binding child_data.date_of_birth}" HorizontalOptions="FillAndExpand" Format="dd/MM/yyyy" Margin="0" FontSize="12"/>
+                </StackLayout>
+
+                <controls:CustomLabel x:Name="lbGender" Grid.Row="3" Grid.Column="0" Text="{resx:Translate lbGender}" Margin="0,12,0,0" FontSize="12" />
+                <controls:RadioButtonsGroup x:Name="radgGender" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" ItemsSource="{Binding lstGender}" 
+                                        Direction="{Binding Source={x:Static helpers:Settings.FlowDirection}}" SelectedItem="{Binding selected_gender}" SelectedValuePath="id" 
+                                        DisplayMemberPath="name" Orientation="Horizontal"/>
+
+                <StackLayout Grid.Row="4" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbAddress" Text="{resx:Translate lbAddress}" FontSize="12" />
+                    <controls:CustomEntry x:Name="txtAddress" Text="{Binding child_data.address}" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbHealthCondition" Text="{resx:Translate lbHealthCondition}" FontSize="12" />
+                    <controls:CustomEntry x:Name="txtHealthCondition" Text="{Binding child_data.health_condition}" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="6" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbSpecialNeeds" Text="{resx:Translate lbSpecialNeeds}" FontSize="12"/>
+                    <Picker x:Name="cmbSpecialNeeds" VerticalOptions="Start" HorizontalOptions="FillAndExpand" TextColor="{StaticResource TextColor}"
+                        ItemsSource="{Binding lstSpecialNeeds}" ItemDisplayBinding="{Binding special_need_name}" SelectedItem="{Binding selected_special_need, Mode=TwoWay}" FontFamily="{StaticResource TextFont}" FontSize="14"/>
+                        <!--Title="{resx:Translate lbSpecialNeeds}"-->
+                </StackLayout>
+
+                <StackLayout Grid.Row="7" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbWhatToKnow" Text="{resx:Translate lbWhatToKnow}" FontSize="12"/>
+                    <controls:CustomEntry x:Name="txtWhatToKnow" Text="{Binding child_data.what_to_know}"/>
+                </StackLayout>
+
+                <controls:CustomLabel x:Name="lbTakePhoto" Grid.Row="8" Grid.Column="0" Text="{resx:Translate lbUsePhoto}" Margin="0,12,0,0" FontSize="12" />
+                <controls:RadioButtonsGroup x:Name="radgTakePhoto" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" HorizontalOptions="Start" VerticalOptions="Start" ItemsSource="{Binding lstTakePhoto}" 
+                                        Direction="{Binding Source={x:Static helpers:Settings.FlowDirection}}" SelectedItem="{Binding selected_take_photo}" SelectedValuePath="id" 
+                                        DisplayMemberPath="name" Orientation="Horizontal"/>
+
+                <StackLayout Grid.Row="9" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbStartDate" Text="{resx:Translate lbStartDate}" FontSize="12" />
+                    <DatePicker x:Name="dtStartDate" Date="{Binding child_data.start_date}" HorizontalOptions="FillAndExpand" Format="dd/MM/yyyy" Margin="0" FontSize="12"/>
+                </StackLayout>
+
+                <!--<StackLayout Grid.Row="10" Grid.ColumnSpan="4" Padding="0" Margin="0" Spacing="0">
+                    <controls:CustomLabel x:Name="lbEndDate" Text="{resx:Translate lbEndDate}" FontSize="12" />
+                    <DatePicker x:Name="dtEndDate" Date="{Binding child_data.end_date}" HorizontalOptions="FillAndExpand" Format="dd/MM/yyyy" Margin="0" FontSize="12"/>
+                </StackLayout>-->
+            </Grid>
+        </ScrollView>
+
+        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40" Margin="5,0" Padding="0">
+            <Label Text="{resx:TranslateExtension Text=lbNext}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NextCommand}"/>
+            </Frame.GestureRecognizers>
+        </Frame>
+    </Grid>
+</ContentView>

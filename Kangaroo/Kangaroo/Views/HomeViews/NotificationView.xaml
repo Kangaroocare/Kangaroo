@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="Kangaroo.Views.NotificationView">
+  <ContentView.Content>
+        <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" BackgroundColor="{StaticResource GrayLightest}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" Padding="0" Spacing="0">
+                <ffimageloading:CachedImage x:Name="ffHeader" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="70" WidthRequest="200" 
+                                        DownsampleToViewSize="true" Source="{helpers:ImageResource Kangaroo.Images.LoginLogo.png}" Margin="0,25,0,0">
+
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NotificationViewCommand}"/>
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+            </StackLayout>
+
+            <sflv:SfListView x:Name="lvNotifications" Grid.Row="1" ItemsSource="{Binding lstNotifications, Mode=TwoWay}" FlowDirection="MatchParent" Orientation="Vertical" 
+                             ItemSpacing="8" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" IsScrollBarVisible="False" Margin="2,0,2,0">
+                <sflv:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                            <Grid x:Name="NotificationItem" HeightRequest="110" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="{Binding created_at}" Style="{StaticResource LabelButton}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="10"/>
+
+                                <Frame Grid.Row="1" HeightRequest="90" CornerRadius="3" HasShadow="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{Binding background_color}" BorderColor="{Binding background_color}" Padding="5" Margin="0">
+                                    <Grid Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <ffimageloading:CachedImage Grid.Column="0" Aspect="AspectFit" DownsampleToViewSize="true" Source="{Binding image}" StyleClass="Circle" Margin="3">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation />
+                                            </ffimageloading:CachedImage.Transformations>
+                                        </ffimageloading:CachedImage>
+
+                                        <Label Grid.Column="1" Text="{Binding title}" Style="{StaticResource LabelButton}" TextColor="{Binding font_color}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="13"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame Grid.RowSpan="2" HeightRequest="20" WidthRequest="20" CornerRadius="10" HorizontalOptions="End" VerticalOptions="Start" Margin="0,9,0,0" Padding="0" BackgroundColor="Red">
+                                    <Label Text="{Binding msg_count}" TextColor="{StaticResource BrandWhite}" FontSize="9" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvNotifications}, Path=BindingContext}" Command="{Binding ContactSenderCommand}" 
+                                                          CommandParameter="{Binding Source={x:Reference NotificationItem}, Path=BindingContext}"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </sflv:SfListView.ItemTemplate>
+            </sflv:SfListView>
+        </Grid>
+        
+    </ContentView.Content>
+</ContentView>

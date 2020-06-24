@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:converters="clr-namespace:Kangaroo.Converters"
+             xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="Kangaroo.Views.ActivityView" BackgroundColor="{StaticResource GrayLightest}">
+
+    <ContentView.Content>
+        <Grid Margin="10,10,10,0" Padding="0" ColumnSpacing="10" RowSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="40*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+
+            <ffimageloading:CachedImage Grid.Row="0" Grid.Column="0" Aspect="AspectFit" DownsampleToViewSize="true" Source="{Binding child_face}" StyleClass="Circle" Margin="3">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation />
+                </ffimageloading:CachedImage.Transformations>
+            </ffimageloading:CachedImage>
+
+            <Label Grid.Row="0" Grid.Column="1" Text="{Binding child_name}" Style="{StaticResource LabelButton}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="16"/>
+
+            <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" Padding="0" Spacing="5">
+                <Label Text="{Binding report_day}" Style="{StaticResource LabelButton}" HorizontalOptions="Center" VerticalOptions="Start" FontSize="16"/>
+
+                <Frame CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40" Margin="0" Padding="0">
+                    <Label Text="{resx:TranslateExtension Text=lbAddActivity}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddActivityCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
+
+            <BoxView Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+
+            <sflv:SfListView x:Name="lvActivities" Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding lstActivities, Mode=TwoWay}" 
+                             FlowDirection="MatchParent" Orientation="Vertical" ItemSpacing="0" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" 
+                             IsScrollBarVisible="False" Margin="0,5,0,0">
+                <sflv:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="ActivityItem" HeightRequest="40" HorizontalOptions="FillAndExpand"  Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+
+                                <!--Pathroom, Medication and Trip header template-->
+                                <Grid HeightRequest="40" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BrandColor}" IsVisible="{Binding is_default_header}" Margin="0,0,0,5" Padding="5,0" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="70*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding activity_type_name}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandYellow}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="12"/>
+                                    <Label Grid.Column="1" Text="{resx:Translate lbTime}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="2" Text="{resx:Translate lbDesc}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="3" Text="..." Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                                </Grid>
+
+                                <!--Pathroom, Medication and Trip item template-->
+                                <Grid HeightRequest="40" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BrandWhite}" IsVisible="{Binding is_default_item}" Margin="0" Padding="5,0" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="70*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="1" Text="{Binding activity_time}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="2" Text="{Binding activity_desc}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+
+                                    <Label Grid.Column="3" Text="&#xe825;" Style="{StaticResource MenuIcon}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="17" TextColor="{StaticResource BrandColor}" Margin="0">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvActivities}, Path=BindingContext}" Command="{Binding DeleteActivityCommand}" 
+                                                                  CommandParameter="{Binding Source={x:Reference ActivityItem}, Path=BindingContext.serial}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                                <!--Nutrition header template-->
+                                <Grid HeightRequest="40" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BrandColor}" IsVisible="{Binding is_nutrition_header}" Margin="0,0,0,5" Padding="5,0" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="50*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding activity_type_name}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandYellow}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="12"/>
+                                    <Label Grid.Column="1" Text="{resx:Translate lbTime}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="2" Text="{resx:Translate lbNutritionType}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="3" Text="{resx:Translate lbDesc}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="4" Text="..." Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                                </Grid>
+
+                                <!--Nutrition item template-->
+                                <Grid HeightRequest="40" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BrandWhite}" IsVisible="{Binding is_nutrition_item}" Margin="0" Padding="5,0" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20*"/>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="50*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="1" Text="{Binding activity_time}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="2" Text="{Binding nutrition_type_name}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="3" Text="{Binding activity_desc}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+
+                                    <Label Grid.Column="4" Text="&#xe825;" Style="{StaticResource MenuIcon}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="17" TextColor="{StaticResource BrandColor}" Margin="0">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvActivities}, Path=BindingContext}" Command="{Binding DeleteActivityCommand}" 
+                                                              CommandParameter="{Binding Source={x:Reference ActivityItem}, Path=BindingContext.serial}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                                <!--Supply Needs header template-->
+                                <Grid HeightRequest="40" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BrandColor}" IsVisible="{Binding is_supply_header}" Margin="0,0,0,5" Padding="5,0" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="70*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding activity_type_name}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandYellow}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="12"/>
+                                    <Label Grid.Column="1" Text="{resx:Translate lbDesc}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+                                    <Label Grid.Column="2" Text="..." Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="12"/>
+                                </Grid>
+
+                                <!--Supply Needs item template-->
+                                <Grid HeightRequest="40" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BrandWhite}" IsVisible="{Binding is_supply_item}" Margin="0" Padding="5,0" RowSpacing="0" ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="70*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="1" Text="{Binding activity_desc}" Style="{StaticResource LabelButton}" TextColor="{StaticResource BrandColor}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="11"/>
+
+                                    <Label Grid.Column="2" Text="&#xe825;" Style="{StaticResource MenuIcon}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="17" TextColor="{StaticResource BrandColor}" Margin="0">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference lvActivities}, Path=BindingContext}" Command="{Binding DeleteActivityCommand}" 
+                                                                  CommandParameter="{Binding Source={x:Reference ActivityItem}, Path=BindingContext.serial}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Grid>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </sflv:SfListView.ItemTemplate>
+            </sflv:SfListView>
+
+            <StackLayout Grid.Row="3" Grid.ColumnSpan="3" Padding="0" Margin="0" Spacing="0">
+                <controls:CustomLabel x:Name="lbGeneralNotes" Text="{resx:Translate lbGeneralNotes}" FontSize="12"/>
+                <controls:CustomEntry x:Name="txtGeneralNotes" Text="{Binding general_note}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Grid.ColumnSpan="3" Padding="0" Margin="0,15" Spacing="20" Orientation="Horizontal">
+                <controls:CustomLabel x:Name="lbChildProgress" Text="{resx:Translate lbChildProgress}" FontSize="12"/>
+
+                <!--<rating:SfRating ItemCount="5" Value="{Binding child_progress}" ItemSize="22">-->
+                <rating:SfRating ItemCount="5" Value="{Binding child_progress}" ItemSize="30" ItemSpacing="8" Precision="Standard" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <rating:SfRating.RatingSettings>
+                        <rating:SfRatingSettings RatedFill="{StaticResource BrandColor}" UnRatedFill="{StaticResource GrayLight}" RatedStroke="{StaticResource BrandWhite}"
+                                                 UnRatedStroke="{StaticResource BrandWhite}" HorizontalOptions="FillAndExpand" IsEnabled="True"/>
+                    </rating:SfRating.RatingSettings>
+
+                </rating:SfRating>
+            </StackLayout>
+
+            <Frame Grid.Row="5" Grid.ColumnSpan="3" CornerRadius="5" HasShadow="False" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40" Margin="5,0" Padding="0">
+                <Label Text="{resx:TranslateExtension Text=lbNext}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource LabelBold}" TextColor="{StaticResource BgColor}" Margin="0"/>
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NextCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

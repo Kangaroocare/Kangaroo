@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kangaroo.App"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:theme="clr-namespace:Kangaroo.Themes">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <theme:AppTheme/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--Global Styles-->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource BrandColor}" />
+                <Setter Property="BarTextColor" Value="{StaticResource GrayDarker}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayDarker}" />
+                <Setter Property="NavigationPage.BackButtonTitle" Value="{resx:Translate lbBack}" />
+            </Style>
+            
+            <OnPlatform x:TypeArguments="x:String" x:Key="IconFont" Android="iconfont.ttf#iconfont" iOS="icon-font" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="TextFont" Android="DroidKufi-Regular.ttf#iconfont" iOS="DroidArabicKufi" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont" Android="DroidKufi-Bold.ttf#iconfont" iOS="DroidArabicKufiBold" />
+            <OnPlatform x:TypeArguments="x:String" x:Key="SFTextFont" Android="DroidKufi-Regular.ttf" />
+
+            <!--Side Menu Icon-->
+            <Style x:Key="MenuIcon" TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontFamily" Value="{StaticResource IconFont}"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5,0,5,0"/>
+                <Setter Property="WidthRequest" Value="40"/>
+            </Style>
+
+            <!--Side Menu Label-->
+            <Style x:Key="MenuLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+
+            <!--Bottom Toolbar Icon-->
+            <Style x:Key="ToolIcon" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontFamily" Value="{StaticResource IconFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5,0,5,0"/>
+                <Setter Property="WidthRequest" Value="40"/>
+            </Style>
+
+            <!--Bottom Toolbar Label-->
+            <Style x:Key="ToolLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="SpanIcon" TargetType="Span">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontFamily" Value="{StaticResource IconFont}"/>
+            </Style>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            </Style>
+
+            <Style x:Key="LabelButton" TargetType="Label">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+            </Style>
+
+            <Style x:Key="LabelBold" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="LinkButton" TargetType="Label">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource SecondaryColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+            </Style>
+
+            <Style TargetType="Label" x:Key="HeaderStyle">
+                <Setter Property="TextColor" Value="{StaticResource BrandColor}"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style TargetType="controls:CustomLabel" x:Key="BoldText">
+                <Setter Property="TextColor" Value="{StaticResource GrayLighter}"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+            </Style>
+
+            <!--Label Button-->
+            <Style x:Key="LabelButtonStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource BgColor}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource BrandColor}"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+
+            <Style x:Key="LabelButtonSmall" TargetType="Label">
+                <Setter Property="FontSize" Value="11"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource BgColor}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource BrandColor}"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <!--List Button-->
+            <Style x:Key="ListButton" TargetType="Label">
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource BgColor}"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <!--Toolbar Style-->
+            <Style TargetType="Grid" x:Key="ToolbarStyle">
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource BrandColor}"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+
+            <!--Toolbar Title-->
+            <Style TargetType="Label" x:Key="ToolbarTitle">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource BgColor}"/>
+                <Setter Property="XAlign" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            </Style>
+
+            <!--Menu Main Header-->
+            <Style TargetType="Label" x:Key="MenuMainHeader">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <!--Menu Sub Header-->
+            <Style TargetType="Label" x:Key="MenuSubHeader">
+                <Setter Property="FontSize" Value="10"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="TextColor" Value="{DynamicResource BgColor}"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <!--Horizontal Separator-->
+            <Style x:Key="hSeparator" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{DynamicResource GrayLighter}"/>
+                <Setter Property="HeightRequest" Value="0.5"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <!--Vertical Separator-->
+            <Style x:Key="vSeparator" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{DynamicResource GrayLighter}"/>
+                <Setter Property="WidthRequest" Value="1"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style TargetType="controls:TogglesRow">
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayDarker}"/>
+                <Setter Property="SelectedColor" Value="{StaticResource BrandColor}"/>
+                <Setter Property="FontFamily" Value="{StaticResource TextFont}"/>
+                <Setter Property="UnselectedColor" Value="Gray"/>
+                <Setter Property="ItemsSpacing" Value="{OnPlatform iOS=12}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

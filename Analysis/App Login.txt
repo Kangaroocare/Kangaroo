@@ -1,0 +1,16 @@
+
+Parents:
+
+* id = 7, user_type = "4", name = "sweet mommy", mobile = 544957555, pwd = 123456
+
+* id = 22, user_type = "4", name = "«”„«¡", mobile = 500000000, pwd = 123456
+
+
+
+Teachers:
+
+* id = 1, user_type = "3", name = "test", mobile = 544552211, pwd = 123456
+
+* id = 20, user_type = "3", name = "elham sayed", mobile = 544951212, pwd = 123456
+
+

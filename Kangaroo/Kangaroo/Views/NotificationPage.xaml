@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:controls="clr-namespace:Kangaroo.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+        xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+        xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+        x:Class="Kangaroo.Views.NotificationPage" Appearing="BasePage_Appearing">
+
+    <Grid Padding="0" Margin="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:Toolbar x:Name="barTitle"/>
+
+        <Grid Grid.Row="1" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <sflv:SfListView x:Name="lvNotifications" Grid.ColumnSpan="4"  ItemsSource="{Binding lstNotifications, Mode=TwoWay}" FlowDirection="MatchParent" Orientation="Vertical" 
+                             ItemSpacing="8" AutoFitMode="Height" SelectionBackgroundColor="{StaticResource BgColor}" IsScrollBarVisible="False" Margin="2,0,2,0">
+                <sflv:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="NotificationItem" HeightRequest="110" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource BgColor}" Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Text="{Binding created_at}" Style="{StaticResource LabelButton}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="10"/>
+
+                                <Frame Grid.Row="1" HeightRequest="90" CornerRadius="3" HasShadow="False" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{Binding background_color}" BorderColor="{Binding background_color}" Padding="5" Margin="0">
+                                    <Grid Margin="0" Padding="0" RowSpacing="0" ColumnSpacing="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <ffimageloading:CachedImage Grid.Column="0" Aspect="AspectFit" DownsampleToViewSize="true" Source="{Binding image}" StyleClass="Circle" Margin="3">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation />
+                                            </ffimageloading:CachedImage.Transformations>
+                                        </ffimageloading:CachedImage>
+
+                                        <Label Grid.Column="1" Text="{Binding title}" Style="{StaticResource LabelButton}" TextColor="{Binding font_color}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="13"/>
+                                    </Grid>
+                                </Frame>
+
+                                <Frame Grid.RowSpan="2" HeightRequest="20" WidthRequest="20" CornerRadius="10" HorizontalOptions="End" VerticalOptions="Start" Margin="0,9,0,0" Padding="0" BackgroundColor="Red">
+                                    <Label Text="{Binding msg_count}" TextColor="{StaticResource BrandWhite}" FontSize="9" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Frame>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </sflv:SfListView.ItemTemplate>
+            </sflv:SfListView>
+        </Grid>
+
+        <ActivityIndicator Grid.RowSpan="2" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+    </Grid>
+</controls:BasePage>

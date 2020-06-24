@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:controls="clr-namespace:Kangaroo.Controls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="Kangaroo.Views.HomePage" Appearing="BasePage_Appearing">
+
+    <Grid Margin="0" Padding="0" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="63"/>
+        </Grid.RowDefinitions>
+
+        <ContentView x:Name="ctnHomeView" Grid.Row="0" Content="{Binding CurrentView}"/>
+        
+        <BoxView Grid.Row="1" Margin="0" Style="{StaticResource hSeparator}"/>
+
+        <Grid x:Name="grdMenu" Grid.Row="2" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout x:Name="slFirstView" Grid.Column="0" Orientation="Vertical" HeightRequest="63" Margin="0,6,0,0" Padding="0" Spacing="4" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="&#xe887;" Style="{StaticResource ToolIcon}" TextColor="{Binding FirstViewColor}"/>
+                <Label Text="{Binding FirstViewText}" Style="{StaticResource ToolLabel}" TextColor="{Binding FirstViewColor}"/>
+                <BoxView Color="{StaticResource BrandColor}" HeightRequest="6" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsFirstViewSelected}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FirstViewCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout x:Name="slSecondView" Grid.Column="1" Orientation="Vertical" HeightRequest="63" Margin="0,6,0,0" Padding="0" Spacing="4" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="&#xe83b;" Style="{StaticResource ToolIcon}" TextColor="{Binding SecondViewColor}" IsVisible="{Binding IsUnRegistered}"/>
+                <Label Text="&#xe8b5;" Style="{StaticResource ToolIcon}" TextColor="{Binding SecondViewColor}" IsVisible="{Binding IsTeacher}"/>
+                <Label Text="&#xe8b5;" Style="{StaticResource ToolIcon}" TextColor="{Binding SecondViewColor}" IsVisible="{Binding IsParent}"/>
+                <Label Text="{Binding SecondViewText}" Style="{StaticResource ToolLabel}" TextColor="{Binding SecondViewColor}"/>
+                <BoxView Color="{StaticResource BrandColor}" HeightRequest="6" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsSecondViewSelected}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SecondViewCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout x:Name="slThirdView" Grid.Column="2" Orientation="Vertical" HeightRequest="63" Margin="0,6,0,0" Padding="0" Spacing="4" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="&#xe885;" Style="{StaticResource ToolIcon}" TextColor="{Binding ThirdViewColor}" IsVisible="{Binding IsUnRegistered}"/>
+                <Label Text="&#xe84f;" Style="{StaticResource ToolIcon}" TextColor="{Binding ThirdViewColor}" IsVisible="{Binding IsTeacher}"/>
+                <Label Text="&#xe873;" Style="{StaticResource ToolIcon}" TextColor="{Binding ThirdViewColor}" IsVisible="{Binding IsParent}"/>
+                <Label Text="{Binding ThirdViewText}" Style="{StaticResource ToolLabel}" TextColor="{Binding ThirdViewColor}"/>
+                <BoxView Color="{StaticResource BrandColor}" HeightRequest="6" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsThirdViewSelected}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ThirdViewCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout x:Name="slFourthView" Grid.Column="3" Orientation="Vertical" HeightRequest="63" Margin="0,6,0,0" Padding="0" Spacing="4" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Label Text="&#xe88d;" Style="{StaticResource ToolIcon}" TextColor="{Binding FourthViewColor}"/>
+                <Label Text="{Binding FourthViewText}" Style="{StaticResource ToolLabel}" TextColor="{Binding FourthViewColor}"/>
+                <BoxView Color="{StaticResource BrandColor}" HeightRequest="6" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsFourthViewSelected}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FourthViewCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </Grid>
+
+        <ActivityIndicator Grid.RowSpan="3" IsRunning="{Binding IsBusy}" Color="{StaticResource BrandColor}" Margin="150"/>
+    </Grid>
+</controls:BasePage>

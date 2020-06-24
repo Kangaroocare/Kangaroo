@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kangaroo.Controls.Stepbar"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             x:Name="MyStepbar">
+    
+    <ContentView.Content>
+        <Grid Padding="0" Margin="0,10,0,0" RowSpacing="5" ColumnSpacing="0" BackgroundColor="{StaticResource BgColor}" HeightRequest="55">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Column="1" HeightRequest="30" WidthRequest="30" CornerRadius="15" HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" BackgroundColor="{Binding FirstStepColor, Source={x:Reference MyStepbar}}">
+                <Label Text="1" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+
+            <Frame Grid.Column="4" HeightRequest="30" WidthRequest="30" CornerRadius="15" HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" BackgroundColor="{Binding SecondStepColor, Source={x:Reference MyStepbar}}">
+                <Label Text="2" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+
+            <Frame Grid.Column="7" HeightRequest="30" WidthRequest="30" CornerRadius="15" HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" BackgroundColor="{Binding ThirdStepColor, Source={x:Reference MyStepbar}}">
+                <Label Text="3" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+
+            <Frame Grid.Column="10" HeightRequest="30" WidthRequest="30" CornerRadius="15" HorizontalOptions="Start" VerticalOptions="Start" Margin="0" Padding="0" BackgroundColor="{Binding FourthStepColor, Source={x:Reference MyStepbar}}">
+                <Label Text="4" TextColor="{StaticResource BrandWhite}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Frame>
+
+            <BoxView Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" Margin="10,0" BackgroundColor="{Binding SecondStepColor, Source={x:Reference MyStepbar}}"/>
+            <BoxView Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" Margin="10,0" BackgroundColor="{Binding ThirdStepColor, Source={x:Reference MyStepbar}}"/>
+            <BoxView Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand" Margin="10,0" BackgroundColor="{Binding FourthStepColor, Source={x:Reference MyStepbar}}"/>
+
+            <controls:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{resx:Translate lbChildData}" TextColor="{Binding FirstStepColor, Source={x:Reference MyStepbar}}" HorizontalOptions="Center" FontSize="11"/>
+            <controls:CustomLabel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Text="{resx:Translate lbContactData}" TextColor="{Binding SecondStepColor, Source={x:Reference MyStepbar}}" HorizontalOptions="Center" FontSize="11"/>
+            <controls:CustomLabel Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Text="{resx:Translate lbParentData}" TextColor="{Binding ThirdStepColor, Source={x:Reference MyStepbar}}" HorizontalOptions="Center" FontSize="11"/>
+            <controls:CustomLabel Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Text="{resx:Translate lbImages}" TextColor="{Binding FourthStepColor, Source={x:Reference MyStepbar}}" HorizontalOptions="Center" FontSize="11"/>
+
+            <BoxView Grid.Row="2" Grid.ColumnSpan="12" Style="{StaticResource hSeparator}" HorizontalOptions="FillAndExpand"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

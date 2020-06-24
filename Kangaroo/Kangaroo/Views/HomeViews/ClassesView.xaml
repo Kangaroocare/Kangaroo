@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:resx="clr-namespace:Kangaroo.Resources"
+             xmlns:controls="clr-namespace:Kangaroo.Controls"
+             xmlns:helpers="clr-namespace:Kangaroo.Helpers"
+             xmlns:sflv="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Kangaroo.Views.ClassesView" BackgroundColor="{StaticResource GrayLightest}">
+    
+    <ContentView.Content>
+        <Grid Margin="0" Padding="0" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ffimageloading:CachedImage x:Name="ffHeader" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" 
+                    HeightRequest="70" WidthRequest="200" DownsampleToViewSize="true" Source="{helpers:ImageResource Kangaroo.Images.LoginLogo.png}" Margin="0,25,0,0">
+            </ffimageloading:CachedImage>
+
+            <sflv:SfListView x:Name="lvClasses" Grid.Row="2" ItemsSource="{Binding lstClasses, Mode=TwoWay}" FlowDirection="MatchParent" Orientation="Vertical" ItemSpacing="0" 
+                             AutoFitMode="Height" SelectionBackgroundColor="Transparent" IsScrollBarVisible="False" IsStickyHeader="True" Margin="5">
+
+                <sflv:SfListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0" Margin="0" ColumnSpacing="0" BackgroundColor="{StaticResource BrandColor}" HeightRequest="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:CustomLabel Grid.Column="0" Text="{resx:TranslateExtension Text=lbClassName}" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource BgColor}" Margin="0" />
+                            <controls:CustomLabel Grid.Column="1" Text="{resx:TranslateExtension Text=lbKidsCount}" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource BgColor}" Margin="0" />
+                            <controls:CustomLabel Grid.Column="2" Text="{resx:TranslateExtension Text=lbAttended}" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource BgColor}" Margin="0" />
+                            <controls:CustomLabel Grid.Column="3" Text="{resx:TranslateExtension Text=lbAbsent}" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" FontAttributes="Bold" TextColor="{StaticResource BgColor}" Margin="0" />
+                        </Grid>
+                    </DataTemplate>
+                </sflv:SfListView.HeaderTemplate>
+
+                <sflv:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{Binding class_color}" HeightRequest="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:CustomLabel Grid.Column="0" Text="{Binding class_name}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="12" TextColor="{StaticResource BrandColor}" Margin="5,0"/>
+                            <controls:CustomLabel Grid.Column="1" Text="{Binding related_kids}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" TextColor="{StaticResource BrandColor}" Margin="0"/>
+                            <controls:CustomLabel Grid.Column="2" Text="{Binding attended_kids}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" TextColor="{StaticResource BrandColor}" Margin="0"/>
+                            <controls:CustomLabel Grid.Column="3" Text="{Binding absent_kids}" HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontSize="12" TextColor="{StaticResource BrandColor}" Margin="0"/>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Class_Tapped" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </sflv:SfListView.ItemTemplate>
+            </sflv:SfListView>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>
