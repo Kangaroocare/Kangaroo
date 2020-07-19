@@ -11,7 +11,7 @@
 *.userprefs
 
 # Analysis files
-Analysis/
+**/Analysis/*
 
 # Build results
 [Dd]ebug/
